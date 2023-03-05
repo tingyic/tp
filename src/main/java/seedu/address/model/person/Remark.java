@@ -1,2 +1,3 @@
-package seedu.address.model.person;public class Remark {
+package seedu.address.model.person;
+public class Remark {
 }
