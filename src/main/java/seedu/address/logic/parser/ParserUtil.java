@@ -14,6 +14,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.lecture.ModuleName;
+import seedu.address.model.lecture.Professor;
+import seedu.address.model.lecture.Time;
+import seedu.address.model.lecture.Venue;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -49,6 +53,14 @@ public class ParserUtil {
         }
         return new Name(trimmedName);
     }
+    public static ModuleName parseModuleName(String moduleName) throws ParseException {
+        requireNonNull(moduleName);
+        String trimmedModuleName = moduleName.trim();
+        if (!ModuleName.isValidName(trimmedModuleName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new ModuleName(trimmedModuleName);
+    }
 
     /**
      * Parses a {@code String phone} into a {@code Phone}.
@@ -64,7 +76,14 @@ public class ParserUtil {
         }
         return new Phone(trimmedPhone);
     }
-
+    public static Professor parseProfessor(String professor) throws ParseException {
+        requireNonNull(professor);
+        String trimmedProfessor = professor.trim();
+        if (!Professor.isValidProfessor(trimmedProfessor)) {
+            throw new ParseException(Professor.MESSAGE_CONSTRAINTS);
+        }
+        return new Professor(trimmedProfessor);
+    }
     /**
      * Parses a {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
@@ -80,6 +99,15 @@ public class ParserUtil {
         return new Address(trimmedAddress);
     }
 
+    public static Venue parseVenue(String venue) throws ParseException {
+        requireNonNull(venue);
+        String trimmedVenue = venue.trim();
+        if (!Venue.isValidVenue(trimmedVenue)) {
+            throw new ParseException(Venue.MESSAGE_CONSTRAINTS);
+        }
+        return new Venue(trimmedVenue);
+    }
+
     /**
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
@@ -93,6 +121,14 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+    public static Time parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        if (!Time.isValidTime(trimmedTime)) {
+            throw new ParseException(Time.MESSAGE_CONSTRAINTS);
+        }
+        return new Time(trimmedTime);
     }
 
     /**
