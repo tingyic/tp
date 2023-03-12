@@ -1,32 +1,34 @@
-package seedu.address.model.lecture;
+package seedu.address.model.person;
 
 import seedu.address.model.person.Phone;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-public class Professor {
+public class Teacher {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Name of teachers should only contain alphabets";
+
+    public static final String VALIDATION_REGEX = "[^\\s].*";
+
     public final String value;
 
     /**
-     * Constructs a {@code Phone}.
+     * Constructs a {@code Teacher}.
      *
-     * @param professor A valid phone number.
+     * @param teacher A teacher.
      */
-    public Professor(String professor) {
-        requireNonNull(professor);
-        checkArgument(isValidProfessor(professor), MESSAGE_CONSTRAINTS);
-        value = professor;
+    public Teacher(String teacher) {
+        requireNonNull(teacher);
+        checkArgument(isValidTeacher(teacher), MESSAGE_CONSTRAINTS);
+        value = teacher;
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
-    public static boolean isValidProfessor(String test) {
+    public static boolean isValidTeacher(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

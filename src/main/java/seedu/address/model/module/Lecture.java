@@ -1,4 +1,4 @@
-package seedu.address.model.lecture;
+package seedu.address.model.module;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -17,7 +17,7 @@ public class Lecture {
 
     // Identity fields
     private final ModuleName moduleName;
-    private final Professor professor;
+    private final Teacher teacher;
     private final Time time;
 
     // Data fields
@@ -27,10 +27,10 @@ public class Lecture {
     /**
      * Every field must be present and not null.
      */
-    public Lecture(ModuleName moduleName, Professor professor, Time time, Venue venue, Set<Tag> tags) {
-        requireAllNonNull(moduleName, professor, time, venue, tags);
+    public Lecture(ModuleName moduleName, Teacher teacher, Time time, Venue venue, Set<Tag> tags) {
+        requireAllNonNull(moduleName, teacher, time, venue, tags);
         this.moduleName = moduleName;
-        this.professor = professor;
+        this.teacher = teacher;
         this.time = time;
         this.venue = venue;
         this.tags.addAll(tags);
@@ -40,8 +40,8 @@ public class Lecture {
         return moduleName;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public Teacher getProfessor() {
+        return teacher;
     }
 
     public Time getTime() {
@@ -98,7 +98,7 @@ public class Lecture {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(moduleName, professor, time, venue, tags);
+        return Objects.hash(moduleName, teacher, time, venue, tags);
     }
 
     @Override

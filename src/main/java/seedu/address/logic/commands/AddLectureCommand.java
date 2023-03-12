@@ -9,15 +9,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
-import seedu.address.model.lecture.Lecture;
+import seedu.address.model.module.Lecture;
 
 /**
  * Adds a person to the address book.
  */
 public class AddLectureCommand extends Command {
 
-    public static final String COMMAND_WORD = "lecture";
+    public static final String COMMAND_WORD = "module";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
             + "Parameters: "

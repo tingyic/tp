@@ -1,4 +1,4 @@
-package seedu.address.model.lecture;
+package seedu.address.model.module;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
@@ -47,8 +47,8 @@ public class ModuleName {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof seedu.address.model.lecture.ModuleName // instanceof handles nulls
-                && fullName.equals(((seedu.address.model.lecture.ModuleName) other).fullName)); // state check
+                || (other instanceof seedu.address.model.module.ModuleName // instanceof handles nulls
+                && fullName.equals(((seedu.address.model.module.ModuleName) other).fullName)); // state check
     }
 
     @Override

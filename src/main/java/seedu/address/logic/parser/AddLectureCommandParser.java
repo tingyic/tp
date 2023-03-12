@@ -12,11 +12,11 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddLectureCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.lecture.Lecture;
-import seedu.address.model.lecture.ModuleName;
-import seedu.address.model.lecture.Time;
-import seedu.address.model.lecture.Professor;
-import seedu.address.model.lecture.Venue;
+import seedu.address.model.module.Lecture;
+import seedu.address.model.module.ModuleName;
+import seedu.address.model.module.Time;
+import seedu.address.model.module.Teacher;
+import seedu.address.model.module.Venue;
 import seedu.address.model.tag.Tag;
 
 
@@ -39,14 +39,13 @@ public class AddLectureCommandParser implements Parser<AddLectureCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddLectureCommand.MESSAGE_USAGE));
         }
 
-        // Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         ModuleName moduleName = ParserUtil.parseModuleName(argMultimap.getValue(PREFIX_NAME).get());
-        Professor professor = ParserUtil.parseProfessor(argMultimap.getValue(PREFIX_PHONE).get());
+        Teacher teacher = ParserUtil.parseTeacher(argMultimap.getValue(PREFIX_PHONE).get());
         Time time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_EMAIL).get());
         Venue venue = ParserUtil.parseVenue(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Lecture lecture = new Lecture(moduleName, professor, time, venue, tagList);
+        Lecture lecture = new Lecture(moduleName, teacher, time, venue, tagList);
 
         return new AddLectureCommand(lecture);
     }

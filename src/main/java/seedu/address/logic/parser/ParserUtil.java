@@ -14,10 +14,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.lecture.ModuleName;
-import seedu.address.model.lecture.Professor;
-import seedu.address.model.lecture.Time;
-import seedu.address.model.lecture.Venue;
+import seedu.address.model.module.ModuleName;
+import seedu.address.model.module.Teacher;
+import seedu.address.model.module.Time;
+import seedu.address.model.module.Venue;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -76,13 +76,13 @@ public class ParserUtil {
         }
         return new Phone(trimmedPhone);
     }
-    public static Professor parseProfessor(String professor) throws ParseException {
-        requireNonNull(professor);
-        String trimmedProfessor = professor.trim();
-        if (!Professor.isValidProfessor(trimmedProfessor)) {
-            throw new ParseException(Professor.MESSAGE_CONSTRAINTS);
+    public static Teacher parseTeacher(String teacher) throws ParseException {
+        requireNonNull(teacher);
+        String trimmedTeacher = teacher.trim();
+        if (!Teacher.isValidTeacher(trimmedTeacher)) {
+            throw new ParseException(Teacher.MESSAGE_CONSTRAINTS);
         }
-        return new Professor(trimmedProfessor);
+        return new Teacher(trimmedTeacher);
     }
     /**
      * Parses a {@code String address} into an {@code Address}.
