@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalModules.ALICE;
-import static seedu.address.testutil.TypicalModules.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalModules.getTypicalModuleTracker;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,25 +22,25 @@ import seedu.address.model.module.Module;
 import seedu.address.model.module.exceptions.DuplicateModuleException;
 import seedu.address.testutil.ModuleBuilder;
 
-public class AddressBookTest {
+public class ModuleTrackerTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final ModuleTracker moduleTracker = new ModuleTracker();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getModuleList());
+        assertEquals(Collections.emptyList(), moduleTracker.getModuleList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> moduleTracker.resetData(null));
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+    public void resetData_withValidReadOnlyModuleTracker_replacesData() {
+        ModuleTracker newData = getTypicalModuleTracker();
+        moduleTracker.resetData(newData);
+        assertEquals(newData, moduleTracker);
     }
 
     @Test
@@ -49,47 +49,47 @@ public class AddressBookTest {
         Module editedAlice = new ModuleBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Module> newModules = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newModules);
+        ModuleTrackerStub newData = new ModuleTrackerStub(newModules);
 
-        assertThrows(DuplicateModuleException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateModuleException.class, () -> moduleTracker.resetData(newData));
     }
 
     @Test
     public void hasModule_nullModule_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasModule(null));
+        assertThrows(NullPointerException.class, () -> moduleTracker.hasModule(null));
     }
 
     @Test
-    public void hasModule_moduleNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasModule(ALICE));
+    public void hasModule_moduleNotInModuleTracker_returnsFalse() {
+        assertFalse(moduleTracker.hasModule(ALICE));
     }
 
     @Test
-    public void hasModule_moduleInAddressBook_returnsTrue() {
-        addressBook.addModule(ALICE);
-        assertTrue(addressBook.hasModule(ALICE));
+    public void hasModule_moduleInModuleTracker_returnsTrue() {
+        moduleTracker.addModule(ALICE);
+        assertTrue(moduleTracker.hasModule(ALICE));
     }
 
     @Test
-    public void hasModule_moduleWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addModule(ALICE);
+    public void hasModule_moduleWithSameIdentityFieldsInModuleTracker_returnsTrue() {
+        moduleTracker.addModule(ALICE);
         Module editedAlice = new ModuleBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(addressBook.hasModule(editedAlice));
+        assertTrue(moduleTracker.hasModule(editedAlice));
     }
 
     @Test
     public void getModuleList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getModuleList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> moduleTracker.getModuleList().remove(0));
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose modules list can violate interface constraints.
+     * A stub ReadOnlyModuleTracker whose modules list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class ModuleTrackerStub implements ReadOnlyModuleTracker {
         private final ObservableList<Module> modules = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Module> modules) {
+        ModuleTrackerStub(Collection<Module> modules) {
             this.modules.setAll(modules);
         }
 
