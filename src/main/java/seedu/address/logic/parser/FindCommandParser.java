@@ -4,10 +4,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import java.util.Arrays;
 
+// import seedu.address.commons.util.ComparatorUtil;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.module.NameContainsKeywordsPredicate;
-import seedu.address.commons.util.ComparatorUtil;
 /**
  * Parses input arguments and creates a new FindCommand object
  */

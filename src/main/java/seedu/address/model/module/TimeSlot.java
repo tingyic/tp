@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Objects;
+// import java.util.Objects;
 
 /**
  * Represents a Module's timeSlot in the module tracker.
@@ -21,7 +21,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
             "Timeslot should be of format 'Day StartTime EndTime' (Example: Tuesday 12:00 14:00)";
     public static final String VALIDATION_REGEX = "^(monday|tuesday|wednesday|thursday|friday|saturday|sunday)"
             + "\\s(([01]?[0-9]|2[0-3]):[0-5][0-9])\\s(([01]?[0-9]|2[0-3]):[0-5][0-9])$";
-    public DayOfWeek day;
+    public DayOfWeek day; //visibility modifier checkstyle issue, need help to fix
     private LocalTime startTime;
     private LocalTime endTime;
     private String storedInputString;

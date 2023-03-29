@@ -74,7 +74,8 @@ public interface Model {
     /**
      * Replaces the given module {@code target} with {@code editedModule}.
      * {@code target} must exist in the module tracker.
-     * The module identity of {@code editedModule} must not be the same as another existing module in the module tracker.
+     * The module identity of {@code editedModule} must not be the same as another existing module in the
+     * module tracker.
      */
     void setModule(Module target, Module editedModule);
 
