@@ -55,7 +55,7 @@ public class RemarkCommand extends Command {
         Module moduleToEdit = lastShownList.get(index.getZeroBased());
         Module editedModule = new Module(
                 moduleToEdit.getName(), moduleToEdit.getResource(), moduleToEdit.getTimeSlot(),
-                moduleToEdit.getAddress(), moduleToEdit.getTags(), remark, moduleToEdit.getDeadline(),
+                moduleToEdit.getVenue(), moduleToEdit.getTags(), remark, moduleToEdit.getDeadline(),
                 moduleToEdit.getTeacher());
 
         model.setModule(moduleToEdit, editedModule);

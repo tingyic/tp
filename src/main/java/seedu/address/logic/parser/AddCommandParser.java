@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VENUE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -16,7 +16,6 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.module.Address;
 import seedu.address.model.module.Deadline;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.Name;
@@ -24,6 +23,7 @@ import seedu.address.model.module.Remark;
 import seedu.address.model.module.Resource;
 import seedu.address.model.module.Teacher;
 import seedu.address.model.module.TimeSlot;
+import seedu.address.model.module.Venue;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -38,7 +38,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TAG, PREFIX_TIMESLOT, PREFIX_ADDRESS,
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TAG, PREFIX_TIMESLOT, PREFIX_VENUE,
                         PREFIX_REMARK, PREFIX_DEADLINE, PREFIX_TEACHER, PREFIX_RESOURCE);
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TAG)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -55,9 +55,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElse(EMPTY_INPUT));
         Resource resource = ParserUtil.parseResource(argMultimap.getValue(PREFIX_RESOURCE).orElse(EMPTY_INPUT));
         TimeSlot timeSlot = ParserUtil.parseTimeSlot(argMultimap.getValue(PREFIX_TIMESLOT).orElse(EMPTY_INPUT));
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).orElse(EMPTY_INPUT));
+        Venue venue = ParserUtil.parseVenue(argMultimap.getValue(PREFIX_VENUE).orElse(EMPTY_INPUT));
 
-        Module module = new Module(name, resource, timeSlot, address, tagList, remark, deadline, teacher);
+        Module module = new Module(name, resource, timeSlot, venue, tagList, remark, deadline, teacher);
 
         return new AddCommand(module);
     }

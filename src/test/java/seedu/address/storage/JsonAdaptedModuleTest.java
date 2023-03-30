@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.module.Address;
 import seedu.address.model.module.Name;
 import seedu.address.model.module.Resource;
 import seedu.address.model.module.TimeSlot;
+import seedu.address.model.module.Venue;
 
 public class JsonAdaptedModuleTest {
     private static final String INVALID_NAME = "R@chel";
@@ -27,7 +27,7 @@ public class JsonAdaptedModuleTest {
     private static final String VALID_NAME = CS2103T_LEC.getName().toString();
     private static final String VALID_TYPE = CS2103T_LEC.getResource().toString();
     private static final String VALID_TIMESLOT = CS2103T_LEC.getTimeSlot().toString();
-    private static final String VALID_ADDRESS = CS2103T_LEC.getAddress().toString();
+    private static final String VALID_ADDRESS = CS2103T_LEC.getVenue().toString();
 
     private static final String VALID_REMARK = "Best module ever! I love computer science!";
     private static final String VALID_DEADLINE = "20th Feb 10am";
@@ -99,7 +99,7 @@ public class JsonAdaptedModuleTest {
         JsonAdaptedModule module =
                 new JsonAdaptedModule(VALID_NAME, VALID_TYPE, VALID_TIMESLOT, INVALID_ADDRESS, VALID_TAGS,
                         VALID_REMARK, VALID_DEADLINE, VALID_TEACHER);
-        String expectedMessage = Address.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Venue.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, module::toModelType);
     }
 
@@ -107,7 +107,7 @@ public class JsonAdaptedModuleTest {
     public void toModelType_nullAddress_throwsIllegalValueException() {
         JsonAdaptedModule module = new JsonAdaptedModule(VALID_NAME, VALID_TYPE, VALID_TIMESLOT, null,
                 VALID_TAGS, VALID_REMARK, VALID_DEADLINE, VALID_TEACHER);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Venue.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, module::toModelType);
     }
 

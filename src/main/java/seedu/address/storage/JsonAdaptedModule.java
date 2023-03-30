@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.module.Address;
 import seedu.address.model.module.Deadline;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.Name;
@@ -18,6 +17,7 @@ import seedu.address.model.module.Remark;
 import seedu.address.model.module.Resource;
 import seedu.address.model.module.Teacher;
 import seedu.address.model.module.TimeSlot;
+import seedu.address.model.module.Venue;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,7 +30,7 @@ class JsonAdaptedModule {
     private final String name;
     private final String resource;
     private final String timeSlot;
-    private final String address;
+    private final String venue;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String remark;
     private final String deadline;
@@ -41,13 +41,13 @@ class JsonAdaptedModule {
      */
     @JsonCreator
     public JsonAdaptedModule(@JsonProperty("name") String name, @JsonProperty("resource") String resource,
-            @JsonProperty("timeSlot") String timeSlot, @JsonProperty("address") String address,
+            @JsonProperty("timeSlot") String timeSlot, @JsonProperty("venue") String venue,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("remark") String remark,
             @JsonProperty("deadline") String deadline, @JsonProperty("teacher") String teacher) {
         this.name = name;
         this.resource = resource;
         this.timeSlot = timeSlot;
-        this.address = address;
+        this.venue = venue;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -63,7 +63,7 @@ class JsonAdaptedModule {
         name = source.getName().fullName;
         resource = source.getResource().value;
         timeSlot = source.getTimeSlot().toString();
-        address = source.getAddress().value;
+        venue = source.getVenue().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -109,13 +109,13 @@ class JsonAdaptedModule {
         }
         final TimeSlot modelTimeSlot = new TimeSlot(timeSlot);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (venue == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Venue.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!Venue.isValidVenue(venue)) {
+            throw new IllegalValueException(Venue.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final Venue modelVenue = new Venue(venue);
 
         final Set<Tag> modelTags = new HashSet<>(moduleTags);
 
@@ -135,7 +135,7 @@ class JsonAdaptedModule {
 
         final Teacher modelTeacher = new Teacher(teacher);
 
-        return new Module(modelName, modelResource, modelTimeSlot, modelAddress, modelTags, modelRemark,
+        return new Module(modelName, modelResource, modelTimeSlot, modelVenue, modelTags, modelRemark,
                 modelDeadline, modelTeacher);
     }
 

@@ -3,7 +3,6 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.module.Address;
 import seedu.address.model.module.Deadline;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.Name;
@@ -11,6 +10,7 @@ import seedu.address.model.module.Remark;
 import seedu.address.model.module.Resource;
 import seedu.address.model.module.Teacher;
 import seedu.address.model.module.TimeSlot;
+import seedu.address.model.module.Venue;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -22,7 +22,7 @@ public class ModuleBuilder {
     public static final String DEFAULT_NAME = "CS2103T";
     public static final String DEFAULT_RESOURCE = "www.google.com";
     public static final String DEFAULT_TIMESLOT = "230323 14:00";
-    public static final String DEFAULT_ADDRESS = "COM1";
+    public static final String DEFAULT_VENUE = "COM1";
     public static final String DEFAULT_REMARK = "Zoom Class";
     public static final String DEFAULT_DEADLINE = "120423 12:00";
     public static final String DEFAULT_TEACHER = "Prof Tan";
@@ -30,7 +30,7 @@ public class ModuleBuilder {
     private Name name;
     private Resource resource;
     private TimeSlot timeSlot;
-    private Address address;
+    private Venue venue;
     private Set<Tag> tags;
     private Remark remark;
     private Deadline deadline;
@@ -43,7 +43,7 @@ public class ModuleBuilder {
         name = new Name(DEFAULT_NAME);
         resource = new Resource(DEFAULT_RESOURCE);
         timeSlot = new TimeSlot(DEFAULT_TIMESLOT);
-        address = new Address(DEFAULT_ADDRESS);
+        venue = new Venue(DEFAULT_VENUE);
         tags = new HashSet<>();
         remark = new Remark(DEFAULT_REMARK);
         deadline = new Deadline(DEFAULT_DEADLINE);
@@ -57,7 +57,7 @@ public class ModuleBuilder {
         name = moduleToCopy.getName();
         resource = moduleToCopy.getResource();
         timeSlot = moduleToCopy.getTimeSlot();
-        address = moduleToCopy.getAddress();
+        venue = moduleToCopy.getVenue();
         tags = new HashSet<>(moduleToCopy.getTags());
         remark = moduleToCopy.getRemark();
         deadline = moduleToCopy.getDeadline();
@@ -83,8 +83,8 @@ public class ModuleBuilder {
     /**
      * Sets the {@code Address} of the {@code Module} that we are building.
      */
-    public ModuleBuilder withAddress(String address) {
-        this.address = new Address(address);
+    public ModuleBuilder withVenue(String venue) {
+        this.venue = new Venue(venue);
         return this;
     }
 
@@ -129,7 +129,7 @@ public class ModuleBuilder {
     }
 
     public Module build() {
-        return new Module(name, resource, timeSlot, address, tags, remark, deadline, teacher);
+        return new Module(name, resource, timeSlot, venue, tags, remark, deadline, teacher);
     }
 
 }

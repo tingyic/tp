@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_CS3230;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESOURCE_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_LECTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMESLOT_CS3219;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_CS3219;
 
 import org.junit.jupiter.api.Test;
 
@@ -48,8 +48,8 @@ public class EditModuleDescriptorTest {
         editedAmy = new EditModuleDescriptorBuilder(DESC_CS3230).withTimeSlot(VALID_TIMESLOT_CS3219).build();
         assertFalse(DESC_CS3230.equals(editedAmy));
 
-        // different address -> returns false
-        editedAmy = new EditModuleDescriptorBuilder(DESC_CS3230).withAddress(VALID_ADDRESS_CS3219).build();
+        // different venue -> returns false
+        editedAmy = new EditModuleDescriptorBuilder(DESC_CS3230).withVenue(VALID_VENUE_CS3219).build();
         assertFalse(DESC_CS3230.equals(editedAmy));
 
         // different tags -> returns false

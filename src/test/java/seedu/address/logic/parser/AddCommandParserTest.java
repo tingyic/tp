@@ -1,11 +1,9 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_CS3219;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_CS3230;
 import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_CS3230;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_VENUE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMESLOT_DESC;
@@ -22,12 +20,14 @@ import static seedu.address.logic.commands.CommandTestUtil.TIMESLOT_DESC_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.TIMESLOT_DESC_CS3230;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_CS3230;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESOURCE_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_LECTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_TUTORIAL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMESLOT_CS3219;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_CS3219;
+import static seedu.address.logic.commands.CommandTestUtil.VENUE_DESC_CS3219;
+import static seedu.address.logic.commands.CommandTestUtil.VENUE_DESC_CS3230;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalModules.CS3219;
@@ -52,13 +52,13 @@ public class AddCommandParserTest {
         // whitespace only preamble
         assertParseSuccess(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219
                 + TIMESLOT_DESC_CS3219
-                + ADDRESS_DESC_CS3219 + TAG_DESC_LECTURE + DEADLINE_DESC_CS3219
+                + VENUE_DESC_CS3219 + TAG_DESC_LECTURE + DEADLINE_DESC_CS3219
                 + REMARK_DESC_CS3219 + TEACHER_DESC_CS3219, new AddCommand(expectedModule));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_CS3230 + NAME_DESC_CS3219 + TYPE_DESC_CS3219
                 + TIMESLOT_DESC_CS3219
-                + ADDRESS_DESC_CS3219 + TAG_DESC_LECTURE + DEADLINE_DESC_CS3219
+                + VENUE_DESC_CS3219 + TAG_DESC_LECTURE + DEADLINE_DESC_CS3219
                 + REMARK_DESC_CS3219 + TEACHER_DESC_CS3219, new AddCommand(expectedModule));
 
 
@@ -67,25 +67,25 @@ public class AddCommandParserTest {
         // multiple types - last type accepted
         // assertParseSuccess(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3230 + TYPE_DESC_CS3219
         // + TIMESLOT_DESC_CS3219
-        // + ADDRESS_DESC_CS3219 + TAG_DESC_TUTORIAL + DEADLINE_DESC_CS3219
+        // + VENUE_DESC_CS3219 + TAG_DESC_TUTORIAL + DEADLINE_DESC_CS3219
         // + REMARK_DESC_CS3219 + TEACHER_DESC_CS3219, new AddCommand(expectedModule));
 
         // multiple timeSlots - last timeSlot accepted
         // assertParseSuccess(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3230
         // + TIMESLOT_DESC_CS3219
-        // + ADDRESS_DESC_CS3219 + TAG_DESC_TUTORIAL, new AddCommand(expectedModule));
+        // + VENUE_DESC_CS3219 + TAG_DESC_TUTORIAL, new AddCommand(expectedModule));
 
         // multiple addresses - last address accepted
         // assertParseSuccess(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-        // + ADDRESS_DESC_CS3230
-        // + ADDRESS_DESC_CS3219 + TAG_DESC_TUTORIAL, new AddCommand(expectedModule));
+        // + VENUE_DESC_CS3230
+        // + VENUE_DESC_CS3219 + TAG_DESC_TUTORIAL, new AddCommand(expectedModule));
 
 
         // multiple tags - all accepted
         Module expectedModuleMultipleTags = new ModuleBuilder(CS3219).withTags(VALID_TAG_TUTORIAL, VALID_TAG_LECTURE)
                 .build();
         assertParseSuccess(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-                + ADDRESS_DESC_CS3219
+                + VENUE_DESC_CS3219
                 + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL + DEADLINE_DESC_CS3219
                 + REMARK_DESC_CS3219 + TEACHER_DESC_CS3219, new AddCommand(expectedModuleMultipleTags));
     }
@@ -95,7 +95,7 @@ public class AddCommandParserTest {
         // zero tags
         Module expectedModule = new ModuleBuilder(CS3230).build();
         assertParseSuccess(parser, NAME_DESC_CS3230 + TYPE_DESC_CS3230 + TIMESLOT_DESC_CS3230
-                        + ADDRESS_DESC_CS3230 + REMARK_DESC_CS3230 + DEADLINE_DESC_CS3230
+                        + VENUE_DESC_CS3230 + REMARK_DESC_CS3230 + DEADLINE_DESC_CS3230
                         + TEACHER_DESC_CS3230 + TAG_DESC_TUTORIAL,
                 new AddCommand(expectedModule));
     }
@@ -106,27 +106,27 @@ public class AddCommandParserTest {
 
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-                        + ADDRESS_DESC_CS3219,
+                        + VENUE_DESC_CS3219,
                 expectedMessage);
 
         // missing type prefix
         assertParseFailure(parser, NAME_DESC_CS3219 + VALID_RESOURCE_CS3219 + TIMESLOT_DESC_CS3219
-                        + ADDRESS_DESC_CS3219,
+                        + VENUE_DESC_CS3219,
                 expectedMessage);
 
         // missing timeSlot prefix
         assertParseFailure(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + VALID_TIMESLOT_CS3219
-                        + ADDRESS_DESC_CS3219,
+                        + VENUE_DESC_CS3219,
                 expectedMessage);
 
         // missing address prefix
         assertParseFailure(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-                        + VALID_ADDRESS_CS3219,
+                        + VALID_VENUE_CS3219,
                 expectedMessage);
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_CS3219 + VALID_RESOURCE_CS3219 + VALID_TIMESLOT_CS3219
-                        + VALID_ADDRESS_CS3219,
+                        + VALID_VENUE_CS3219,
                 expectedMessage);
     }
 
@@ -134,41 +134,41 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-                + ADDRESS_DESC_CS3219
+                + VENUE_DESC_CS3219
                 + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL, Name.MESSAGE_CONSTRAINTS);
 
         // Commented out because type is now resources that has no particular format
         // invalid type
         // assertParseFailure(parser, NAME_DESC_CS3219 + INVALID_TYPE_DESC + TIMESLOT_DESC_CS3219
-        // + ADDRESS_DESC_CS3219
+        // + VENUE_DESC_CS3219
         // + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL, Resource.MESSAGE_CONSTRAINTS);
 
 
         // invalid timeSlot
         assertParseFailure(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + INVALID_TIMESLOT_DESC
-                + ADDRESS_DESC_CS3219
+                + VENUE_DESC_CS3219
                 + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL, TimeSlot.MESSAGE_CONSTRAINTS);
 
         // Commented out because address will not have a particular format
         // invalid address
         // assertParseFailure(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-        // + INVALID_ADDRESS_DESC
+        // + INVALID_VENUE_DESC
         // + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL, Address.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, NAME_DESC_CS3219 + TYPE_DESC_CS3219 + TIMESLOT_DESC_CS3219
-                + ADDRESS_DESC_CS3219
+                + VENUE_DESC_CS3219
                 + INVALID_TAG_DESC + VALID_TAG_TUTORIAL, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + TAG_DESC_TUTORIAL + TIMESLOT_DESC_CS3219
-                        + INVALID_ADDRESS_DESC,
+                        + INVALID_VENUE_DESC,
                 Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_CS3219 + TYPE_DESC_CS3219
                         + TIMESLOT_DESC_CS3219
-                + ADDRESS_DESC_CS3219 + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL,
+                + VENUE_DESC_CS3219 + TAG_DESC_LECTURE + TAG_DESC_TUTORIAL,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }

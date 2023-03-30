@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditModuleDescriptor;
-import seedu.address.model.module.Address;
 import seedu.address.model.module.Deadline;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.Name;
@@ -13,6 +12,7 @@ import seedu.address.model.module.Remark;
 import seedu.address.model.module.Resource;
 import seedu.address.model.module.Teacher;
 import seedu.address.model.module.TimeSlot;
+import seedu.address.model.module.Venue;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -38,7 +38,7 @@ public class EditModuleDescriptorBuilder {
         descriptor.setName(module.getName());
         descriptor.setResource(module.getResource());
         descriptor.setTimeSlot(module.getTimeSlot());
-        descriptor.setAddress(module.getAddress());
+        descriptor.setVenue(module.getVenue());
         descriptor.setTeacher(module.getTeacher());
         descriptor.setDeadline(module.getDeadline());
         descriptor.setRemark(module.getRemark());
@@ -72,8 +72,8 @@ public class EditModuleDescriptorBuilder {
     /**
      * Sets the {@code Address} of the {@code EditModuleDescriptor} that we are building.
      */
-    public EditModuleDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
+    public EditModuleDescriptorBuilder withVenue(String venue) {
+        descriptor.setVenue(new Venue(venue));
         return this;
     }
 

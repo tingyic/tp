@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -9,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_RESOURCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEACHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMESLOT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VENUE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 import java.util.Collections;
@@ -22,7 +22,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.module.Address;
 import seedu.address.model.module.Deadline;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.Name;
@@ -30,6 +29,7 @@ import seedu.address.model.module.Remark;
 import seedu.address.model.module.Resource;
 import seedu.address.model.module.Teacher;
 import seedu.address.model.module.TimeSlot;
+import seedu.address.model.module.Venue;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -46,7 +46,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_TAG + "TAG] "
             + "[" + PREFIX_TIMESLOT + "TIMESLOT] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_VENUE + "VENUE] "
             + "[" + PREFIX_RESOURCE + "RESOURCE] "
             + "[" + PREFIX_TEACHER + "TEACHER] "
             + "[" + PREFIX_DEADLINE + "DEADLINE] "
@@ -105,12 +105,12 @@ public class EditCommand extends Command {
         Name updatedName = editModuleDescriptor.getName().orElse(moduleToEdit.getName());
         Resource updatedResource = editModuleDescriptor.getResource().orElse(moduleToEdit.getResource());
         TimeSlot updatedTimeSlot = editModuleDescriptor.getTimeSlot().orElse(moduleToEdit.getTimeSlot());
-        Address updatedAddress = editModuleDescriptor.getAddress().orElse(moduleToEdit.getAddress());
+        Venue updatedVenue = editModuleDescriptor.getVenue().orElse(moduleToEdit.getVenue());
         Set<Tag> updatedTags = editModuleDescriptor.getTags().orElse(moduleToEdit.getTags());
         Remark updatedRemark = editModuleDescriptor.getRemark().orElse(moduleToEdit.getRemark());
         Deadline updatedDeadline = editModuleDescriptor.getDeadline().orElse(moduleToEdit.getDeadline());
         Teacher updatedTeacher = editModuleDescriptor.getTeacher().orElse(moduleToEdit.getTeacher());
-        return new Module(updatedName, updatedResource, updatedTimeSlot, updatedAddress, updatedTags, updatedRemark,
+        return new Module(updatedName, updatedResource, updatedTimeSlot, updatedVenue, updatedTags, updatedRemark,
                 updatedDeadline, updatedTeacher);
     }
 
@@ -140,7 +140,7 @@ public class EditCommand extends Command {
         private Name name;
         private Resource resource;
         private TimeSlot timeSlot;
-        private Address address;
+        private Venue venue;
         private Set<Tag> tags;
         private Remark remark;
         private Deadline deadline;
@@ -156,7 +156,7 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setResource(toCopy.resource);
             setTimeSlot(toCopy.timeSlot);
-            setAddress(toCopy.address);
+            setVenue(toCopy.venue);
             setTags(toCopy.tags);
             setRemark(toCopy.remark);
             setDeadline(toCopy.deadline);
@@ -167,7 +167,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, resource, timeSlot, address, tags, remark, deadline, teacher);
+            return CollectionUtil.isAnyNonNull(name, resource, timeSlot, venue, tags, remark, deadline, teacher);
         }
 
         public void setName(Name name) {
@@ -194,12 +194,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(timeSlot);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setVenue(Venue venue) {
+            this.venue = venue;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Venue> getVenue() {
+            return Optional.ofNullable(venue);
         }
 
         /**
@@ -261,7 +261,7 @@ public class EditCommand extends Command {
             return getName().equals(e.getName())
                     && getResource().equals(e.getResource())
                     && getTimeSlot().equals(e.getTimeSlot())
-                    && getAddress().equals(e.getAddress())
+                    && getVenue().equals(e.getVenue())
                     && getTags().equals(e.getTags())
                     && getRemark().equals(e.getRemark())
                     && getDeadline().equals(e.getDeadline())

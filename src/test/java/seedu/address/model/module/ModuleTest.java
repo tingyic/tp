@@ -2,11 +2,11 @@ package seedu.address.model.module;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESOURCE_CS3219;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_LECTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMESLOT_CS3219;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_CS3219;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalModules.CS2106_TUT;
 import static seedu.address.testutil.TypicalModules.CS3219;
@@ -34,7 +34,7 @@ public class ModuleTest {
         // same name, all other attributes different -> returns true
         Module editedAlice = new ModuleBuilder(CS2106_TUT).withResource(VALID_RESOURCE_CS3219)
                 .withTimeSlot(VALID_TIMESLOT_CS3219)
-                .withAddress(VALID_ADDRESS_CS3219).withTags(VALID_TAG_LECTURE).build();
+                .withVenue(VALID_VENUE_CS3219).withTags(VALID_TAG_LECTURE).build();
         assertTrue(CS2106_TUT.isSameModule(editedAlice));
 
         // different name, all other attributes same -> returns false
@@ -82,7 +82,7 @@ public class ModuleTest {
         assertFalse(CS2106_TUT.equals(editedAlice));
 
         // different address -> returns false
-        editedAlice = new ModuleBuilder(CS2106_TUT).withAddress(VALID_ADDRESS_CS3219).build();
+        editedAlice = new ModuleBuilder(CS2106_TUT).withVenue(VALID_VENUE_CS3219).build();
         assertFalse(CS2106_TUT.equals(editedAlice));
 
         // different tags -> returns false

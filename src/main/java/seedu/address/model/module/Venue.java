@@ -5,11 +5,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Module's address in the module tracker.
- * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidVenue(String)}
  */
-public class Address {
+public class Venue {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Venue can take any values, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -22,18 +22,18 @@ public class Address {
     /**
      * Constructs an {@code Address}.
      *
-     * @param address A valid address.
+     * @param venue A valid venue.
      */
-    public Address(String address) {
-        requireNonNull(address);
-        checkArgument(isValidAddress(address), MESSAGE_CONSTRAINTS);
-        value = address;
+    public Venue(String venue) {
+        requireNonNull(venue);
+        checkArgument(isValidVenue(venue), MESSAGE_CONSTRAINTS);
+        value = venue;
     }
 
     /**
      * Returns true if a given string is a valid timeSlot.
      */
-    public static boolean isValidAddress(String test) {
+    public static boolean isValidVenue(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -45,8 +45,8 @@ public class Address {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Address // instanceof handles nulls
-                && value.equals(((Address) other).value)); // state check
+                || (other instanceof Venue // instanceof handles nulls
+                && value.equals(((Venue) other).value)); // state check
     }
 
     @Override

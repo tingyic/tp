@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -10,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_RESOURCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEACHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMESLOT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VENUE;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ public class CommandTestUtil {
     public static final String VALID_RESOURCE_CS3219 = "22222222";
     public static final String VALID_TIMESLOT_CS3230 = "230223 18:00";
     public static final String VALID_TIMESLOT_CS3219 = "300123 11:00";
-    public static final String VALID_ADDRESS_CS3230 = "Block 312, Amy Street 1";
-    public static final String VALID_ADDRESS_CS3219 = "Block 123, Bobby Street 3";
+    public static final String VALID_VENUE_CS3230 = "Block 312, Amy Street 1";
+    public static final String VALID_VENUE_CS3219 = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_LECTURE = "Lecture";
     public static final String VALID_TAG_TUTORIAL = "Tutorial";
     public static final String VALID_DEADLINE_CS3219 = "270223 14:00";
@@ -52,8 +52,8 @@ public class CommandTestUtil {
     public static final String TYPE_DESC_CS3219 = " " + PREFIX_RESOURCE + VALID_RESOURCE_CS3219;
     public static final String TIMESLOT_DESC_CS3230 = " " + PREFIX_TIMESLOT + VALID_TIMESLOT_CS3230;
     public static final String TIMESLOT_DESC_CS3219 = " " + PREFIX_TIMESLOT + VALID_TIMESLOT_CS3219;
-    public static final String ADDRESS_DESC_CS3230 = " " + PREFIX_ADDRESS + VALID_ADDRESS_CS3230;
-    public static final String ADDRESS_DESC_CS3219 = " " + PREFIX_ADDRESS + VALID_ADDRESS_CS3219;
+    public static final String VENUE_DESC_CS3230 = " " + PREFIX_VENUE + VALID_VENUE_CS3230;
+    public static final String VENUE_DESC_CS3219 = " " + PREFIX_VENUE + VALID_VENUE_CS3219;
     public static final String TAG_DESC_TUTORIAL = " " + PREFIX_TAG + VALID_TAG_TUTORIAL;
     public static final String TAG_DESC_LECTURE = " " + PREFIX_TAG + VALID_TAG_LECTURE;
     public static final String DEADLINE_DESC_CS3219 = " " + PREFIX_DEADLINE + VALID_DEADLINE_CS3219;
@@ -66,7 +66,7 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_TYPE_DESC = " " + PREFIX_RESOURCE + "911a"; // 'a' not allowed in types
     public static final String INVALID_TIMESLOT_DESC = " " + PREFIX_TIMESLOT + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
+    public static final String INVALID_VENUE_DESC = " " + PREFIX_VENUE; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -78,11 +78,11 @@ public class CommandTestUtil {
     static {
         DESC_CS3230 = new EditModuleDescriptorBuilder().withName(VALID_NAME_CS3230)
                 .withResource(VALID_RESOURCE_CS3230).withTimeSlot(VALID_TIMESLOT_CS3230)
-                .withAddress(VALID_ADDRESS_CS3230)
+                .withVenue(VALID_VENUE_CS3230)
                 .withTags(VALID_TAG_TUTORIAL).build();
         DESC_CS3219 = new EditModuleDescriptorBuilder().withName(VALID_NAME_CS3219)
                 .withResource(VALID_RESOURCE_CS3219).withTimeSlot(VALID_TIMESLOT_CS3219)
-                .withAddress(VALID_ADDRESS_CS3219)
+                .withVenue(VALID_VENUE_CS3219)
                 .withTags(VALID_TAG_LECTURE, VALID_TAG_TUTORIAL).build();
     }
 

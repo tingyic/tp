@@ -494,7 +494,7 @@ be able to accomplish most of the tasks faster using commands than using the mou
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Module**: The module to be recorded in Contact nUS
-* **Address**: The location/venue for the class of a module
+* **Venue**: The location/venue for the class of a module
 * **Deadline**: The deadline for tasks of a module
 * **Name**: Name of a module
 * **Remark**: Additional information regarding a certain module

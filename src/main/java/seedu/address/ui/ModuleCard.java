@@ -36,7 +36,7 @@ public class ModuleCard extends UiPart<Region> {
     @FXML
     private Label resource;
     @FXML
-    private Label address;
+    private Label venue;
     @FXML
     private Label timeSlot;
     @FXML
@@ -57,7 +57,7 @@ public class ModuleCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(module.getName().fullName);
         resource.setText("Resource: " + module.getResource().value);
-        address.setText("Venue: " + module.getAddress().value);
+        venue.setText("Venue: " + module.getVenue().value);
         timeSlot.setText("Time: " + module.getTimeSlot().toString());
         remark.setText("Remark: " + module.getRemark().value);
         module.getTags().stream()
