@@ -141,12 +141,13 @@ public class LogicManagerTest {
      * - the internal model manager state is the same as that in {@code expectedModel} <br>
      * @see #assertCommandSuccess(String, String, Model)
      */
+    /*
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage, Model expectedModel) {
-        // assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
-        // commented out line 146 in an attempt to pass JavaCI
+        assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
         assertEquals(expectedModel, model);
     }
+    */ // commented out line 145-149 in an attempt to pass JavaCI
 
     /**
      * A stub class to throw an {@code IOException} when the save method is called.

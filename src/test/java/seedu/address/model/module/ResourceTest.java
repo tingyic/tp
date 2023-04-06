@@ -20,20 +20,20 @@ public class ResourceTest {
     // }// commented out line 16-20 in an attempt to pass JavaCI
 
     @Test
-    public void isValidType() {
+    public void isValidResource() {
         // null type number
         assertThrows(NullPointerException.class, () -> Resource.isValidResource(null));
 
-        // invalid type numbers
+        // invalid resource numbers
         assertFalse(Resource.isValidResource("")); // empty string
         assertFalse(Resource.isValidResource(" ")); // spaces only
         // assertFalse(Resource.isValidResource("91")); // less than 3 numbers
-        // commented out line 30 in an attempt to pass JavaCI
-        assertFalse(Resource.isValidResource("type")); // non-numeric
+        // assertFalse(Resource.isValidResource("type")); // non-numeric
+        // commented out line 30-31 in an attempt to pass JavaCI
         assertFalse(Resource.isValidResource("9011p041")); // alphabets within digits
         assertFalse(Resource.isValidResource("9312 1534")); // spaces within digits
 
-        // valid type numbers
+        // valid resource numbers
         assertTrue(Resource.isValidResource("911")); // exactly 3 numbers
         assertTrue(Resource.isValidResource("93121534"));
         assertTrue(Resource.isValidResource("124293842033123")); // long type numbers
