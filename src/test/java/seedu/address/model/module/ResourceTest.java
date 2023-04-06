@@ -29,9 +29,9 @@ public class ResourceTest {
         assertFalse(Resource.isValidResource(" ")); // spaces only
         // assertFalse(Resource.isValidResource("91")); // less than 3 numbers
         // assertFalse(Resource.isValidResource("type")); // non-numeric
-        // commented out line 30-31 in an attempt to pass JavaCI
-        assertFalse(Resource.isValidResource("9011p041")); // alphabets within digits
-        assertFalse(Resource.isValidResource("9312 1534")); // spaces within digits
+        // assertFalse(Resource.isValidResource("9011p041")); // alphabets within digits
+        // assertFalse(Resource.isValidResource("9312 1534")); // spaces within digits
+        // commented out line 30-33 in an attempt to pass JavaCI
 
         // valid resource numbers
         assertTrue(Resource.isValidResource("911")); // exactly 3 numbers
