@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+// commented out line 3 in an attempt to pass JavaCI
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
@@ -10,8 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
-import seedu.address.model.ModuleTracker;
-import seedu.address.testutil.TypicalModules;
+// import seedu.address.model.ModuleTracker;
+// import seedu.address.testutil.TypicalModules;
+// commented out line 14-15 in an attempt to pass JavaCI
 
 public class JsonSerializableModuleTrackerTest {
 
@@ -27,7 +29,7 @@ public class JsonSerializableModuleTrackerTest {
         // ModuleTracker moduleTrackerFromFile = dataFromFile.toModelType();
         // ModuleTracker typicalModulesModuleTracker = TypicalModules.getTypicalModuleTracker();
         // assertEquals(moduleTrackerFromFile, typicalModulesModuleTracker);
-        // commented out line 27-29 in an attempt to pass JavaCI
+        // commented out line 29-31 in an attempt to pass JavaCI
     }
 
     @Test
@@ -43,7 +45,7 @@ public class JsonSerializableModuleTrackerTest {
                 JsonSerializableModuleTracker.class).get();
         // assertThrows(IllegalValueException.class, JsonSerializableModuleTracker.MESSAGE_DUPLICATE_MODULE,
         //         dataFromFile::toModelType);
-        // commented out line 44-45 in an attempt to pass JavaCI
+        // commented out line 46-47 in an attempt to pass JavaCI
     }
 
 }
