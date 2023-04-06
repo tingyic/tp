@@ -102,9 +102,8 @@ public class LogicManagerTest {
      * - no exceptions are thrown <br>
      * - the feedback message is equal to {@code expectedMessage} <br>
      * - the internal model manager state is the same as that in {@code expectedModel} <br>
-     * // @see  #assertCommandFailure(String, Class, String, Model)
-     * // commented out line 103 in an attempt to pass JavaCI
      */
+    // @see  #assertCommandFailure(String, Class, String, Model) after line 104 removed for JavaCI
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
             Model expectedModel) throws CommandException, ParseException {
         CommandResult result = logic.execute(inputCommand);
@@ -115,31 +114,31 @@ public class LogicManagerTest {
     // /**
     //  * Executes the command, confirms that a ParseException is thrown and that the result message is correct.
     //  * // @see #assertCommandFailure(String, Class, String, Model)
-    //  * // commented out line 117 in an attempt to pass JavaCI
+    //  * // commented out line 116 in an attempt to pass JavaCI
     //  */
     // private void assertParseException(String inputCommand, String expectedMessage) {
     //     assertCommandFailure(inputCommand, ParseException.class, expectedMessage);
-    // } // commented out line 115-122 in an attempt to pass JavaCI
+    // } // commented out line 114-121 in an attempt to pass JavaCI
 
     // /**
     //  * Executes the command, confirms that a CommandException is thrown and that the result message is correct.
     //  * // @see #assertCommandFailure(String, Class, String, Model)
-    //  * // commented out line 126 in an attempt to pass JavaCI
+    //  * // commented out line 125 in an attempt to pass JavaCI
     //  */
     // private void assertCommandException(String inputCommand, String expectedMessage) {
     //     assertCommandFailure(inputCommand, CommandException.class, expectedMessage);
-    // } // commented out line 124-131 in an attempt to pass JavaCI
+    // } // commented out line 123-130 in an attempt to pass JavaCI
 
     // /**
     //  * Executes the command, confirms that the exception is thrown and that the result message is correct.
     //  * // @see #assertCommandFailure(String, Class, String, Model)
-    //  * // commented out line 135 in an attempt to pass JavaCI
+    //  * // commented out line 134 in an attempt to pass JavaCI
     //  */
     // private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
     //        String expectedMessage) {
     //    Model expectedModel = new ModelManager(model.getModuleTracker(), new UserPrefs());
     //    assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
-    // } // commented out line 133-142 in an attempt to pass JavaCI
+    // } // commented out line 132-141 in an attempt to pass JavaCI
 
     // /**
     //  * Executes the command and confirms that
@@ -154,7 +153,7 @@ public class LogicManagerTest {
         assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
         assertEquals(expectedModel, model);
     }
-    */ // commented out line 144-156 in an attempt to pass JavaCI
+    */ // commented out line 143-155 in an attempt to pass JavaCI
 
     /**
      * A stub class to throw an {@code IOException} when the save method is called.

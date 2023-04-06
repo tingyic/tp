@@ -1,7 +1,7 @@
 package seedu.address.model.module;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+// import static org.junit.jupiter.api.Assertions.assertTrue; // commented out line 4 in an attempt to pass JavaCI
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -60,7 +60,7 @@ public class TimeSlotTest {
         // assertTrue(TimeSlot.isValidTimeSlot("a@bc")); // minimal
         // assertTrue(TimeSlot.isValidTimeSlot("test@localhost")); // alphabets only
         // assertTrue(TimeSlot.isValidTimeSlot("123@145")); // numeric local part and domain name
-        // assertTrue(TimeSlot.isValidTimeSlot("a1+be.d@example1.com")); // mixture of alphanumeric and special characters
+        // assertTrue(TimeSlot.isValidTimeSlot("a1+be.d@example1.com")); // mixture of alphanumeric and special chars
         // assertTrue(TimeSlot.isValidTimeSlot("peter_jack@very-very-very-long-example.com")); // long domain name
         // assertTrue(TimeSlot.isValidTimeSlot("if.you.dream.it_you.can.do.it@example.com")); // long local part
         // assertTrue(TimeSlot.isValidTimeSlot("e1234567@u.nus.edu")); // more than one period in domain
